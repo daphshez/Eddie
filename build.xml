@@ -1,0 +1,28 @@
+<project name="Eddie" default="deploy">
+	
+    <property name="src" value="src"/>
+    <property name="class" value="classes"/>
+    <property name="lib" value="lib"/>
+ 
+    <target name="deploy">
+        <delete dir="c:/decell/Eddie/lib"/>
+		
+        <mkdir dir="c:/decell/Eddie"/>
+
+        <delete dir="${class}"/>
+        <mkdir dir="${class}"/>
+
+        <javac srcdir="${src}" debug="on" destdir="${class}"  source="1.8" target="1.8">
+        <classpath>
+    		<fileset dir="${lib}"><include name="*.jar"/></fileset>
+	    </classpath>
+        </javac>
+
+        <jar jarfile="Eddie.jar">
+            <fileset dir="${class}"/>
+        </jar>
+
+
+    </target>
+
+</project>
